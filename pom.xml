@@ -16,7 +16,12 @@
         <jstl.version>1.2</jstl.version>
         <servlet.version>3.1.0</servlet.version>
         <!-- Spring -->
-        <spring-framework.version>4.3.7.RELEASE</spring-framework.version><!-- 4.2.4RELEASE -->
+        <spring-framework.version>4.3.7.RELEASE</spring-framework.version><!-- 4.2.4.RELEASE -->
+        <!-- JUnit test -->
+        <junit.version>4.12</junit.version>
+        <!-- Logging -->
+        <logback.version>1.0.13</logback.version>
+        <slf4j.version>1.7.13</slf4j.version>
     </properties>
 
     <dependencyManagement>
@@ -85,6 +90,41 @@
             <artifactId>itext</artifactId>
             <version>2.1.5</version>
         </dependency>
+
+        <!-- HSQLDB embedded database -->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+
+        <!-- Spring JDBC -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- test artifacts Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Logging with SLF4 & LogBack -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <!--http://startbootstrap.com/template-overviews/modern-business/  this is theme-->
 
@@ -103,9 +143,15 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <!-- need to find configs in tests in package web-inf like
+        @ContextConfiguration(location={"classpath:/config/aplication-context.xml"})
+        -->
+        <testResources>
+            <testResource>
+                <directory>src/main/webapp/WEB-INF/config</directory>
+            </testResource>
+        </testResources>
     </build>
-
-
-
 
 </project>

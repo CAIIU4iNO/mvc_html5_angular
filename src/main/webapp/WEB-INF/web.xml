@@ -38,6 +38,11 @@
         <welcome-file>/WEB-INF/view/index.jsp</welcome-file>
     </welcome-file-list>
 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/view/error/errorpage.jsp</location>
+    </error-page>
+
     <!-- Filter for work Russian language -->
     <filter>
         <filter-name>encodingFilter</filter-name>
